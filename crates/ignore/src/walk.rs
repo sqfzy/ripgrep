@@ -964,6 +964,16 @@ impl Walk {
         }
         Ok(false)
     }
+
+    /// Skip the current directory.
+    pub fn skip_current_dir(&mut self) -> bool {
+        if let Some(it) = self.it.as_mut() {
+            it.it.skip_current_dir();
+            true
+        } else {
+            false
+        }
+    }
 }
 
 impl Iterator for Walk {
